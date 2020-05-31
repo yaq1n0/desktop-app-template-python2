@@ -5,9 +5,9 @@ from tkinter import Tk
 from os import execv
 from sys import executable, argv
 
-from data.Modules.StartPage import StartPage
-from data.MyFunctions.GrayScale import GrayScale
-from data.MyFunctions.makeGeometry import makeGeometry
+from data.Modules import StartPage
+from data.MyFunctions import GrayScale, makeGeometry
+
 from data.MyVariables.preferences import width as config_width
 from data.MyVariables.preferences import height as config_height
 from data.MyVariables.preferences import dev

@@ -3,8 +3,8 @@
 # imports
 from tkinter import Toplevel, Frame, Label, Button, Scale, Entry, LEFT, HORIZONTAL, FLAT, RIDGE, SOLID, StringVar, N
 
-from data.MyFunctions.GrayScale import GrayScale
-from data.MyVariables.MyFonts import MyFonts
+from data.MyFunctions import GrayScale
+from data.MyVariables import MyFonts
 
 
 # Defining Object ToolTip
@@ -124,6 +124,7 @@ class MyButton(Button):
 
 # Creating MyImageButton
 class MyImageButton(Button):
+    # relwidth is optimized for 16:9 windows, needs to be modified to work with different aspect ratio windows
     relwidth = 0.05 / (16.0 / 9.0)
     relheight = 0.05
 

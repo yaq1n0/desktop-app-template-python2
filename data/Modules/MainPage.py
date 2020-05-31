@@ -1,9 +1,9 @@
 # main page class
 
 # imports
-from data.MyClasses.MyTkWidgets import MyFrame, MyLabel
-from data.MyFunctions.GrayScale import GrayScale
-from data.MyVariables.MyFonts import MyFonts
+from data.MyClasses import MyFrame, MyLabel
+from data.MyFunctions import GrayScale
+from data.MyVariables import MyFonts
 
 
 class MainPage(object):

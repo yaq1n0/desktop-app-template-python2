@@ -8,7 +8,8 @@ def writePreferences(file_path, new_width, new_height, new_font, new_font_size, 
 
     preferences = open(file_path, 'w')
     preferences.writelines([
-        '\n# preferences \n',
+        '\n',
+        '# preferences \n',
         'width = ' + array[0] + '\n',
         'height = ' + array[1] + '\n',
         'font = "' + array[2] + '"\n',

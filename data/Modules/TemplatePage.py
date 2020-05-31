@@ -9,9 +9,11 @@ from data.MyVariables import *
 
 
 class TemplatePage(object):
-    def __init__(self):
-        pass
+    def __init__(self, root):
+        self.root = root
 
     def defaults(self):
-        # methods to call when instance created
-        pass
+        self.createFrame()
+
+    def createFrame(self):
+        self.mainFrame = MyFrame(self.root, GrayScale(20))

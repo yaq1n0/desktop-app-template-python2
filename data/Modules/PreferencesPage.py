@@ -6,17 +6,16 @@ from sys import executable, argv
 from tkinter import END
 from tkinter.messagebox import showinfo, showwarning
 
-from data.MyClasses.MyTkWidgets import MyFrame, MyLabel, MyToggleButton, MyImageButton, MyEntry
-from data.MyFunctions.GrayScale import GrayScale
-from data.MyFunctions.createTkImage import createTkImage
-from data.MyFunctions.writePreferences import writePreferences
-from data.MyVariables.MyFonts import MyFonts
-from data.MyVariables.preferences import width as config_width
-from data.MyVariables.preferences import height as config_height
-from data.MyVariables.preferences import font as config_font
-from data.MyVariables.preferences import font_size as config_font_size
-from data.MyVariables.preferences import tooltips as config_tooltips
-from data.MyVariables.preferences import dev
+from data.MyClasses import MyFrame, MyLabel, MyToggleButton, MyImageButton, MyEntry
+from data.MyFunctions import GrayScale, createTkImage, writePreferences
+from data.MyVariables import MyFonts
+
+from data.MyVariables import width as config_width
+from data.MyVariables import height as config_height
+from data.MyVariables import font as config_font
+from data.MyVariables import font_size as config_font_size
+from data.MyVariables import tooltips as config_tooltips
+from data.MyVariables import dev
 
 
 # restart and quit functions

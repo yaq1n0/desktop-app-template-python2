@@ -1,7 +1,7 @@
 # dictionary of App fonts
 
 # imports
-from data.MyVariables.preferences import font, font_size
+from .preferences import font, font_size
 
 MyFonts = {
     'Default': (font, font_size),
