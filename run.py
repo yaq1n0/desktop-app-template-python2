@@ -36,6 +36,7 @@ def programQuit(*args):
 # creating root
 root = Tk()
 root.title('MyApp')
+root.iconbitmap('data/images/favicon.icosome psssssome optimizat')
 root.resizable(False, False)
 root.geometry(makeGeometry(root, config_width, config_height))
 root.configure(bg=GrayScale(20))
