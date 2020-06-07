@@ -17,14 +17,20 @@ from data.MyVariables.preferences import dev
 def programRestart(*args):
     if dev:
         print('[program] restart')
+
     # code from 'https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/'
     execv(executable, ['python'] + argv)
+
+    return None
 
 
 def programQuit(*args):
     if dev:
         print('[program] quit')
+
     exit()
+
+    return None
 
 
 # creating root

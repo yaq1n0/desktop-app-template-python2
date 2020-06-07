@@ -1,4 +1,5 @@
-# preferences
+
+# preferences 
 width = 1280
 height = 720
 font = "Helvetica"

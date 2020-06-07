@@ -1,12 +1,17 @@
 # functions related to writing to preferences.py
 
 
-def writePreferences(file_path, new_width, new_height, new_font, new_font_size, new_tooltips, new_dev):
+def writePreferences(new_width, new_height, new_font, new_font_size, new_tooltips, new_dev):
     # converting all inputs to string
     array = [new_width, new_height, new_font, new_font_size, new_tooltips, new_dev]
     array = list(map(str, array))
 
-    preferences = open(file_path, 'w')
+    if __name__ == '__main__':
+        _path = '../MyVariables/preferences.py'
+    else:
+        _path = 'data/MyVariables/preferences.py'
+
+    preferences = open(_path, 'w')
     preferences.writelines([
         '\n',
         '# preferences \n',
@@ -19,9 +24,13 @@ def writePreferences(file_path, new_width, new_height, new_font, new_font_size, 
     ])
     preferences.close()
 
+    return None
+
 
 def writeDefaultPreferences():
-    writePreferences('../MyVariables/preferences.py', 1280, 720, 'Helvetica', 12, True, True)
+    writePreferences(1280, 720, 'Helvetica', 12, True, True)
+
+    return None
 
 
 if __name__ == '__main__':
