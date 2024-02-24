@@ -8,7 +8,6 @@ from data.MyVariables import MyFonts
 
 
 class MyButton(Button):
-
     bgcolor, fgcolor, relwidth, relheight = GrayScale(40), GrayScale(220), 0.10, 0.05
     abgcolor, afgcolor = bgcolor, fgcolor
 

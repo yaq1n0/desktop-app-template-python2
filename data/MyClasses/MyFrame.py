@@ -5,7 +5,6 @@ from tkinter import Frame
 
 
 class MyFrame(Frame):
-
     relx, rely, relwidth, relheight = 0, 0, 1, 1
 
     def __init__(self, parent, bgcolor):
@@ -19,4 +18,3 @@ class MyFrame(Frame):
 
     def place_(self):
         self.place(relx=self.relx, rely=self.rely, relwidth=self.relwidth, relheight=self.relheight)
-

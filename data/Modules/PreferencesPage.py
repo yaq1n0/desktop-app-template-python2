@@ -9,13 +9,12 @@ from tkinter.messagebox import showinfo, showwarning
 from data.MyClasses import MyFrame, MyLabel, MyToggleButton, MyImageButton, MyEntry
 from data.MyFunctions import GrayScale, createTkImage, writePreferences
 from data.MyVariables import MyFonts
-
-from data.MyVariables import width as config_width
-from data.MyVariables import height as config_height
+from data.MyVariables import dev
 from data.MyVariables import font as config_font
 from data.MyVariables import font_size as config_font_size
+from data.MyVariables import height as config_height
 from data.MyVariables import tooltips as config_tooltips
-from data.MyVariables import dev
+from data.MyVariables import width as config_width
 
 
 # restart and quit functions
@@ -157,10 +156,10 @@ class PreferencesPage(object):
         self.font_size_entry.insert(0, '12')
 
         setattr(self.tooltips_button, 'enabled', True)
-        self.tooltips_button.f2.tkraise()
+        self.tooltips_button.func2.tkraise()
 
         setattr(self.dev_button, 'enabled', True)
-        self.dev_button.f2.tkraise()
+        self.dev_button.func2.tkraise()
 
     def funcSave(self):
         # save and write to config

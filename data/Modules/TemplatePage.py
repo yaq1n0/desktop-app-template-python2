@@ -1,11 +1,9 @@
 # <template> page class
 
 # imports
-from tkinter import *
 
 from data.MyClasses import *
 from data.MyFunctions import *
-from data.MyVariables import *
 
 
 class TemplatePage(object):

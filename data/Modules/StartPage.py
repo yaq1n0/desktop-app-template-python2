@@ -3,13 +3,11 @@
 # imports
 from data.Modules.MainPage import MainPage
 from data.Modules.PreferencesPage import PreferencesPage
-
 from data.MyClasses import MyFrame, MyLabel, MyButton, MyImageButton
 from data.MyFunctions import GrayScale, makeGeometry, createTkImage
 from data.MyVariables import MyFonts
-
-from data.MyVariables.preferences import width as config_width
 from data.MyVariables.preferences import height as config_height
+from data.MyVariables.preferences import width as config_width
 
 
 class StartPage(object):

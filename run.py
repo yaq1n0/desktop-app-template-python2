@@ -1,16 +1,15 @@
 # template for Python Desktop App using Tkinter
 
-# imports
-from tkinter import Tk
 from os import execv
 from sys import executable, argv
+# imports
+from tkinter import Tk
 
 from data.Modules import StartPage
 from data.MyFunctions import GrayScale, makeGeometry
-
-from data.MyVariables.preferences import width as config_width
-from data.MyVariables.preferences import height as config_height
 from data.MyVariables.preferences import dev
+from data.MyVariables.preferences import height as config_height
+from data.MyVariables.preferences import width as config_width
 
 
 # functions

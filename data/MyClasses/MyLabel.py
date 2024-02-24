@@ -2,6 +2,7 @@
 
 # imports
 from tkinter import Label, FLAT, N
+
 from data.MyFunctions import GrayScale
 from data.MyVariables import MyFonts
 
