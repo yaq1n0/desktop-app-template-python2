@@ -92,12 +92,12 @@ class PreferencesPage(object):
         self.dev_button = MyToggleButton(self.mainFrame, 'Developer', 0.60, 0.70)
 
     def createResetButton(self):
-        self.reset_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('data/images/reset.png', 48, 48),
+        self.reset_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('lib/images/reset.png', 48, 48),
                                           self.funcReset, 0.30, 0.85)
         self.reset_button.place(relwidth=0.14, relheight=0.07)
 
     def createSaveButton(self):
-        self.save_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('data/images/save.png', 48, 48),
+        self.save_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('lib/images/save.png', 48, 48),
                                          self.funcSave, 0.56, 0.85)
         self.save_button.place(relwidth=0.14, relheight=0.07)
 

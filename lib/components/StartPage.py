@@ -42,7 +42,7 @@ class StartPage(object):
         self.button3 = MyButton(self.mainFrame, 'Button3', placeholder, 0.25, 0.40)
         self.button4 = MyButton(self.mainFrame, 'Button4', placeholder, 0.25, 0.50)
         self.button5 = MyImageButton(self.mainFrame, GrayScale(20),
-                                     createTkImage('data/images/preferences.png', 48, 48),
+                                     createTkImage('lib/images/preferences.png', 48, 48),
                                      self.gotoPreferences, 0.425, 0.65)
 
         self.button1.place(relwidth=0.50)

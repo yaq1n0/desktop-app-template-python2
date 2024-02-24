@@ -1,9 +1,9 @@
 # main page class
 
 # imports
-from data.MyClasses import MyFrame, MyLabel
-from data.MyFunctions import GrayScale
-from data.MyVariables import MyFonts
+from lib.widgets import MyFrame, MyLabel
+from lib.functions import GrayScale
+from lib.vars import MyFonts
 
 
 class MainPage(object):

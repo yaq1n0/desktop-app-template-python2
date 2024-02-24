@@ -5,11 +5,12 @@ from sys import executable, argv
 # imports
 from tkinter import Tk
 
-from data.Modules import StartPage
 from data.MyFunctions import GrayScale, makeGeometry
 from data.MyVariables.preferences import dev
 from data.MyVariables.preferences import height as config_height
 from data.MyVariables.preferences import width as config_width
+
+from lib.components import StartPage
 
 
 # functions
@@ -35,7 +36,7 @@ def programQuit(*args):
 # creating root
 root = Tk()
 root.title('MyApp')
-root.iconbitmap('data/images/favicon.ico')
+root.iconbitmap('lib/images/favicon.ico')
 root.resizable(False, False)
 root.geometry(makeGeometry(root, config_width, config_height))
 root.configure(bg=GrayScale(20))

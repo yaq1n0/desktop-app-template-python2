@@ -2,8 +2,8 @@
 
 # imports
 
-from data.MyClasses import *
-from data.MyFunctions import *
+from lib.MyClasses import *
+from lib.MyFunctions import *
 
 
 class TemplatePage(object):
