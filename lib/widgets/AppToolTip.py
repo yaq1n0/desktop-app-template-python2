@@ -12,6 +12,7 @@ from lib.app_root import fonts
 
 class AppToolTip(object):
     """ ToolTip class """
+
     def __init__(self, widget):
         self.widget, self.tipwindow, self.id, self.x, self.y = widget, None, None, 0, 0
 

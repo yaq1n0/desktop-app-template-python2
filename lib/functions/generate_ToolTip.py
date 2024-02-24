@@ -1,6 +1,5 @@
 """ generate ToolTip widget with text """
 
-
 """code from 'https://stackoverflow.com/questions/20399243/display-message-when-hovering-over-something-with-mouse
 -cursor-in-python"""
 

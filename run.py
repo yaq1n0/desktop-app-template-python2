@@ -5,17 +5,14 @@ from sys import executable, argv
 # imports
 from tkinter import Tk
 
-from data.MyFunctions import generate_grayscale_hex, makeGeometry
-from data.MyVariables.preferences import dev
-from data.MyVariables.preferences import height as config_height
-from data.MyVariables.preferences import width as config_width
-
-from lib.components import StartPage
+from lib.components import *
+from lib.functions import generate_grayscale_hex, generate_tk_geometry
+from lib.app_root import user_preferences
 
 
 # functions
 def programRestart(*args):
-    if dev:
+    if user_preferences['dev']:
         print('[program] restart')
 
     # code from 'https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/'
@@ -25,7 +22,7 @@ def programRestart(*args):
 
 
 def programQuit(*args):
-    if dev:
+    if user_preferences['dev']:
         print('[program] quit')
 
     exit()
@@ -36,9 +33,9 @@ def programQuit(*args):
 # creating root
 root = Tk()
 root.title('MyApp')
-root.iconbitmap('lib/images/favicon.ico')
+root.iconbitmap('resources/favicon.ico')
 root.resizable(False, False)
-root.geometry(makeGeometry(root, config_width, config_height))
+root.geometry(generate_tk_geometry(root, user_preferences['width'], user_preferences['height']))
 root.configure(bg=generate_grayscale_hex(20))
 
 # creating StartPage instance 'startPage'
@@ -46,7 +43,7 @@ startPage = StartPage(root)
 
 
 def raiseStart(*args):
-    root.geometry(makeGeometry(root, int(config_height / 2), config_height))
+    root.geometry(generate_tk_geometry(root, int(user_preferences['height'] / 2), user_preferences['height']))
     startPage.mainFrame.tkraise()
 
 

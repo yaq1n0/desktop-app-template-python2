@@ -2,8 +2,9 @@
 
 # imports
 
-from lib.MyClasses import *
-from lib.MyFunctions import *
+from lib.components import *
+from lib.widgets import AppFrame
+from lib.functions import generate_grayscale_hex
 
 
 class TemplatePage(object):
@@ -14,4 +15,4 @@ class TemplatePage(object):
         self.createFrame()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))
+        self.mainFrame = AppFrame(self.root, generate_grayscale_hex(20))

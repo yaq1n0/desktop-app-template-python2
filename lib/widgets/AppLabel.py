@@ -1,4 +1,4 @@
-# MyLabel Class
+# AppLabel class
 
 # imports
 from tkinter import Label, FLAT, N

@@ -6,20 +6,15 @@ from sys import executable, argv
 from tkinter import END
 from tkinter.messagebox import showinfo, showwarning
 
-from data.MyClasses import MyFrame, MyLabel, MyToggleButton, MyImageButton, MyEntry
-from data.MyFunctions import generate_grayscale_hex, createTkImage, writePreferences
-from data.MyVariables import MyFonts
-from data.MyVariables import dev
-from data.MyVariables import font as config_font
-from data.MyVariables import font_size as config_font_size
-from data.MyVariables import height as config_height
-from data.MyVariables import tooltips as config_tooltips
-from data.MyVariables import width as config_width
+from lib.components import *
+from lib.widgets import AppFrame, AppLabel, AppToggleButton, AppImageButton, AppEntryBox
+from lib.functions import generate_grayscale_hex, generate_tk_image
+from lib.app_root import user_preferences, default_preferences, fonts, writeJSON
 
 
 # restart and quit functions
 def programRestart(*args):
-    if dev:
+    if user_preferences['dev'] == True:
         print('[program] restart')
 
     # code from 'https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/'
@@ -29,7 +24,7 @@ def programRestart(*args):
 
 
 def programQuit(*args):
-    if dev:
+    if user_preferences['dev'] == True:
         print('[program] quit')
 
     exit()
@@ -58,47 +53,49 @@ class PreferencesPage(object):
         self.setAll()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))
+        self.mainFrame = AppFrame(self.root, generate_grayscale_hex(20))
 
     def createTitle(self):
-        self.title_label = MyLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
-        self.title_label.configure(font=MyFonts['ExtraLargeBold'])
+        self.title_label = AppLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
+        self.title_label.configure(font=fonts['ExtraLargeBold'])
         self.title_label.place(relwidth=0.9)
 
     def createWidthEntry(self):
-        self.width_entry = MyEntry(self.mainFrame, 'Window Width (pixels)', 0.25, 0.20)
+        self.width_entry = AppEntryBox(self.mainFrame, 'Window Width (pixels)', 0.25, 0.20)
         self.width_entry.label.place(relwidth=0.90, relx=0.05)
         self.width_entry.place(relwidth=0.50)
 
     def createHeightEntry(self):
-        self.height_entry = MyEntry(self.mainFrame, 'Window Height (pixels)', 0.25, 0.325)
+        self.height_entry = AppEntryBox(self.mainFrame, 'Window Height (pixels)', 0.25, 0.325)
         self.height_entry.label.place(relwidth=0.90, relx=0.05)
         self.height_entry.place(relwidth=0.50)
 
     def createFontEntry(self):
-        self.font_entry = MyEntry(self.mainFrame, 'Font Name', 0.25, 0.450)
+        self.font_entry = AppEntryBox(self.mainFrame, 'Font Name', 0.25, 0.450)
         self.font_entry.label.place(relwidth=0.90, relx=0.05)
         self.font_entry.place(relwidth=0.50)
 
     def createFontSizeEntry(self):
-        self.font_size_entry = MyEntry(self.mainFrame, 'Font Size (points)', 0.25, 0.575)
+        self.font_size_entry = AppEntryBox(self.mainFrame, 'Font Size (points)', 0.25, 0.575)
         self.font_size_entry.label.place(relwidth=0.90, relx=0.05)
         self.font_size_entry.place(relwidth=0.50)
 
     def createToolTipToggle(self):
-        self.tooltips_button = MyToggleButton(self.mainFrame, 'Tooltips', 0.20, 0.70)
+        self.tooltips_button = AppToggleButton(self.mainFrame, 'Tooltips', 0.20, 0.70)
 
     def createDevToggle(self):
-        self.dev_button = MyToggleButton(self.mainFrame, 'Developer', 0.60, 0.70)
+        self.dev_button = AppToggleButton(self.mainFrame, 'Developer', 0.60, 0.70)
 
     def createResetButton(self):
-        self.reset_button = MyImageButton(self.mainFrame, generate_grayscale_hex(20), createTkImage('lib/images/reset.png', 48, 48),
-                                          self.funcReset, 0.30, 0.85)
+        self.reset_button = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
+                                           generate_tk_image('resources/reset.png', 48, 48),
+                                           self.funcReset, 0.30, 0.85)
         self.reset_button.place(relwidth=0.14, relheight=0.07)
 
     def createSaveButton(self):
-        self.save_button = MyImageButton(self.mainFrame, generate_grayscale_hex(20), createTkImage('lib/images/save.png', 48, 48),
-                                         self.funcSave, 0.56, 0.85)
+        self.save_button = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
+                                          generate_tk_image('resources/save.png', 48, 48),
+                                          self.funcSave, 0.56, 0.85)
         self.save_button.place(relwidth=0.14, relheight=0.07)
 
     def clearALL(self):
@@ -112,24 +109,31 @@ class PreferencesPage(object):
         # set all entries in GUI from imported vars from preferences.py
         self.clearALL()
 
-        self.width_entry.insert(0, str(config_width))
-        self.height_entry.insert(0, str(config_height))
-        self.font_entry.insert(0, str(config_font))
-        self.font_size_entry.insert(0, str(config_font_size))
+        self.width_entry.insert(0, str(user_preferences['width']))
+        self.height_entry.insert(0, str(user_preferences['height']))
+        self.font_entry.insert(0, str(user_preferences['font']))
+        self.font_size_entry.insert(0, str(user_preferences['font_size']))
 
-        if config_tooltips:
+        if user_preferences['tooltips'] == True:
             self.tooltips_button.func1()
         else:
             self.tooltips_button.func2()
 
-        if dev:
+        if user_preferences['dev'] == True:
             self.dev_button.func1()
         else:
             self.dev_button.func2()
 
     def checkAll(self):
         # checking that values are reasonable
-        # currently only checks that resolution is 16 by 9 and is a common resolution
+
+        # check that numeric inputs are numeric
+        numerics = [self.width_entry.get(), self.height_entry.get(), self.font_size_entry.get()]
+        for numeric in numerics:
+            if not numeric.isnumeric():
+                raise Exception('You have entered a non-numeric in a field that only accepts numbers')
+
+        # check that resolution is 16 by 9 and is a common resolution
         input_width = self.width_entry.get()
         input_height = self.height_entry.get()
 
@@ -139,38 +143,47 @@ class PreferencesPage(object):
         if input_width not in width_list \
                 or input_height not in height_list \
                 or float(input_width) / float(input_height) != 16.0 / 9:
-            showwarning('Resolution Warning!', 'You have selected a non standard resolution\n'
-                                               'This may cause visual errors\n')
-            return True
+            raise Exception('You have selected an unexpected 16:9 resolution, this might cause unexpected errors')
 
-        else:
-            return True
+        # if all the tests pass, return true
+        return True
 
     def funcReset(self):
         # reset to defaults
         self.clearALL()
 
-        self.width_entry.insert(0, '1280')
-        self.height_entry.insert(0, '720')
-        self.font_entry.insert(0, 'Helvetica')
-        self.font_size_entry.insert(0, '12')
+        self.width_entry.insert(0, str(default_preferences['width']))
+        self.height_entry.insert(0, str(default_preferences['height']))
+        self.font_entry.insert(0, str(default_preferences['font']))
+        self.font_size_entry.insert(0, str(default_preferences['font_size']))
 
-        setattr(self.tooltips_button, 'enabled', True)
-        self.tooltips_button.func2.tkraise()
+        if default_preferences['tooltips'] == True:
+            setattr(self.tooltips_button, 'enabled', True)
+            self.tooltips_button.func1()
+        else:
+            setattr(self.tooltips_button, 'disabled', False)
+            self.tooltips_button.func2()
 
-        setattr(self.dev_button, 'enabled', True)
-        self.dev_button.func2.tkraise()
+        if default_preferences['dev'] == True:
+            setattr(self.dev_button, 'enabled', True)
+            self.dev_button.func1()
+        else:
+            setattr(self.dev_button, 'disabled', False)
+            self.dev_button.func2()
 
     def funcSave(self):
         # save and write to config
         if self.checkAll():
-            writePreferences(self.width_entry.get(),
-                             self.height_entry.get(),
-                             self.font_entry.get(),
-                             self.font_size_entry.get(),
-                             getattr(self.tooltips_button, 'enabled'),
-                             getattr(self.dev_button, 'enabled')
-                             )
+            new_user_preferences = {"width": int(self.width_entry.get()),
+                                    "height": int(self.height_entry.get()),
+                                    "font": self.font_entry.get(),
+                                    "font_size": int(self.font_size_entry.get()),
+                                    "tooltips": getattr(self.tooltips_button, 'enabled'),
+                                    "dev": getattr(self.dev_button, 'enabled')
+                                    }
+
+            user_preferences = new_user_preferences.copy()
+            writeJSON("lib/app_user_preferences.json", user_preferences)
 
         showinfo('Settings Saved', 'Settings Saved, click OK to restart')
 

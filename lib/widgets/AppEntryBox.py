@@ -3,12 +3,12 @@
 # imports
 from tkinter import Entry, RIDGE
 
-from lib.widgets import AppLabel
+from .AppLabel import AppLabel
 from lib.functions import generate_grayscale_hex
 from lib.app_root import fonts
 
 
-class EntryBox(Entry):
+class AppEntryBox(Entry):
     charwidth, bgcolor, fgcolor = 20, generate_grayscale_hex(20), generate_grayscale_hex(220)
 
     def __init__(self, parent, text, relx, rely):
