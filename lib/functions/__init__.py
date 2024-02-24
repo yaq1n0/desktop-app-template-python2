@@ -1,4 +1,4 @@
-from .generate_ToolTip import generate_ToolTip
+from .bind_tooltip import bind_tooltip
 from .generate_grayscale_hex import generate_grayscale_hex
 from .generate_tk_geometry import generate_tk_geometry
 from .generate_tk_image import generate_tk_image

@@ -58,27 +58,27 @@ class PreferencesPage(object):
     def createTitle(self):
         self.title_label = AppLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
         self.title_label.configure(font=fonts['ExtraLargeBold'])
-        self.title_label.place(relwidth=0.9)
+        self.title_label.place(relwidth=0.9, relheight=0.05)
 
     def createWidthEntry(self):
-        self.width_entry = AppEntryBox(self.mainFrame, 'Window Width (pixels)', 0.25, 0.20)
+        self.width_entry = AppEntryBox(self.mainFrame, 'Default Window Width (pixels)', 0.25, 0.20)
         self.width_entry.label.place(relwidth=0.90, relx=0.05)
-        self.width_entry.place(relwidth=0.50)
+        self.width_entry.place(relwidth=0.50, relheight=0.05)
 
     def createHeightEntry(self):
-        self.height_entry = AppEntryBox(self.mainFrame, 'Window Height (pixels)', 0.25, 0.325)
+        self.height_entry = AppEntryBox(self.mainFrame, 'Default Window Height (pixels)', 0.25, 0.325)
         self.height_entry.label.place(relwidth=0.90, relx=0.05)
-        self.height_entry.place(relwidth=0.50)
+        self.height_entry.place(relwidth=0.50, relheight=0.05)
 
     def createFontEntry(self):
         self.font_entry = AppEntryBox(self.mainFrame, 'Font Name', 0.25, 0.450)
         self.font_entry.label.place(relwidth=0.90, relx=0.05)
-        self.font_entry.place(relwidth=0.50)
+        self.font_entry.place(relwidth=0.50, relheight=0.05)
 
     def createFontSizeEntry(self):
         self.font_size_entry = AppEntryBox(self.mainFrame, 'Font Size (points)', 0.25, 0.575)
         self.font_size_entry.label.place(relwidth=0.90, relx=0.05)
-        self.font_size_entry.place(relwidth=0.50)
+        self.font_size_entry.place(relwidth=0.50, relheight=0.05)
 
     def createToolTipToggle(self):
         self.tooltips_button = AppToggleButton(self.mainFrame, 'Tooltips', 0.20, 0.70)

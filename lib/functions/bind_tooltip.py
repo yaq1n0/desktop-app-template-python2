@@ -1,14 +1,16 @@
 """ generate ToolTip widget with text """
 
+# imports
+from lib.widgets.AppToolTip import AppToolTip
+
 """code from 'https://stackoverflow.com/questions/20399243/display-message-when-hovering-over-something-with-mouse
 -cursor-in-python"""
 
 
-def generate_ToolTip(widget, text):
+def bind_tooltip(widget, text):
     """ generate ToolTip widget with text """
-    from lib.widgets.AppToolTip import ToolTip
 
-    tooltip = ToolTip(widget)
+    tooltip = AppToolTip(widget)
 
     def enter(event):
         tooltip.showtip(text)

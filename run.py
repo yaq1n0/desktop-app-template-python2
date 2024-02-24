@@ -34,7 +34,6 @@ def programQuit(*args):
 root = Tk()
 root.title('MyApp')
 root.iconbitmap('resources/favicon.ico')
-root.resizable(False, False)
 root.geometry(generate_tk_geometry(root, user_preferences['width'], user_preferences['height']))
 root.configure(bg=generate_grayscale_hex(20))
 
@@ -43,7 +42,7 @@ startPage = StartPage(root)
 
 
 def raiseStart(*args):
-    root.geometry(generate_tk_geometry(root, int(user_preferences['height'] / 2), user_preferences['height']))
+    root.geometry(generate_tk_geometry(root, user_preferences['width'], user_preferences['height']))
     startPage.mainFrame.tkraise()
 
 
@@ -53,6 +52,7 @@ raiseStart()
 root.bind('<Control-q>', programQuit)
 root.bind('<Control-r>', programRestart)
 root.bind('<Escape>', raiseStart)
+root.bind('<Button-4>', raiseStart)
 
 # mainloop
 root.mainloop()

@@ -1,15 +1,19 @@
 # start page class
 
 # imports
+import webbrowser
+
 from lib.components import *
 from lib.widgets import AppFrame, AppLabel, AppButton, AppImageButton
-from lib.functions import generate_grayscale_hex, generate_tk_geometry, generate_tk_image
-from lib.app_root import fonts, user_preferences
+from lib.functions import *
+from lib.app_root import fonts
 
 
 class StartPage(object):
-    FT_main = True
-    FT_preferences = True
+    main_generated = False
+    demo_generated = False
+    template_generated = False
+    preferences_generated = False
 
     def __init__(self, root):
         self.root = root
@@ -35,41 +39,62 @@ class StartPage(object):
             pass
 
         self.button1 = AppButton(self.mainFrame, 'Main', self.gotoMain, 0.25, 0.20)
-        self.button2 = AppButton(self.mainFrame, 'Button2', placeholder, 0.25, 0.30)
-        self.button3 = AppButton(self.mainFrame, 'Button3', placeholder, 0.25, 0.40)
-        self.button4 = AppButton(self.mainFrame, 'Button4', placeholder, 0.25, 0.50)
-        self.button5 = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
+        self.button2 = AppButton(self.mainFrame, 'Demo', self.gotoDemo, 0.25, 0.30)
+        self.button3 = AppButton(self.mainFrame, 'Template', self.gotoTemplate, 0.25, 0.40)
+        self.button4 = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
                                       generate_tk_image('resources/preferences.png', 48, 48),
-                                      self.gotoPreferences, 0.425, 0.65)
+                                      self.gotoPreferences, 0.46, 0.60)
 
         self.button1.place(relwidth=0.50)
         self.button2.place(relwidth=0.50)
         self.button3.place(relwidth=0.50)
-        self.button4.place(relwidth=0.50)
-        self.button5.place(relwidth=0.15, relheight=0.075)
+        self.button4.place(relwidth=0.08, relheight=0.08 * (16 / 9))
 
     def createCreditsLabel(self):
         credits_text = 'Created By: Yaqin Hasan'
-        self.creditsLabel = AppLabel(self.mainFrame, credits_text, 0.25, 0.75)
-        self.creditsLabel.configure(font=fonts['Default'], fg=generate_grayscale_hex(180))
-        self.creditsLabel.place(relwidth=0.50, relheight=0.25)
+        self.creditsLabel = AppButton(self.mainFrame, credits_text, self.gotoCreatorSite, 0.25, 0.80)
+        self.creditsLabel.place(relwidth=0.50, relheight=0.10)
 
     def createMain(self):
         self.mainPage = MainPage(self.root)
+        self.main_generated = True
+
+    def createDemo(self):
+        self.demoPage = DemoPage(self.root)
+        self.demo_generated = True
+
+    def createTemplate(self):
+        self.templatePage = TemplatePage(self.root)
+        self.template_generated = True
 
     def createPreferences(self):
         self.preferencesPage = PreferencesPage(self.root)
+        self.preferences_generated = True
 
     def gotoMain(self):
-        if self.FT_main:
+        if not self.main_generated:
             self.createMain()
-            self.FT_main = False
-        self.root.geometry(generate_tk_geometry(self.root, user_preferences['width'], user_preferences['height']))
+
         self.mainPage.mainFrame.tkraise()
 
+    def gotoDemo(self):
+        if not self.demo_generated:
+            self.createDemo()
+
+        self.demoPage.mainFrame.tkraise()
+
+    def gotoTemplate(self):
+        if not self.template_generated:
+            self.createTemplate()
+
+        self.templatePage.mainFrame.tkraise()
+
     def gotoPreferences(self):
-        if self.FT_preferences:
+        if not self.preferences_generated:
             self.createPreferences()
-            self.FT_preferences = False
 
         self.preferencesPage.mainFrame.tkraise()
+
+    def gotoCreatorSite(self):
+        url = "https://yaqinhasan.com"
+        webbrowser.open(url, new=1, autoraise=True)

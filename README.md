@@ -44,5 +44,4 @@ way that is similar to and will be simple to port over to a web-app type deploym
 
 ## Features to be added
 
-- Fully responsive UI! no longer needing to manually set the viewport resolution.
-  This should be possible but would require massive refactoring of the codebase. 
+- DemoPage with most of the widgets implemented for demo purposes. 

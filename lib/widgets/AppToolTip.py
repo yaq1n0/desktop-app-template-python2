@@ -3,7 +3,7 @@
 # imports
 from tkinter import Toplevel, Label, LEFT, SOLID
 
-from lib.functions import generate_grayscale_hex
+from lib.functions.generate_grayscale_hex import generate_grayscale_hex
 from lib.app_root import fonts
 
 """code from 'https://stackoverflow.com/questions/20399243/display-message-when-hovering-over-something-with-mouse
@@ -17,6 +17,7 @@ class AppToolTip(object):
         self.widget, self.tipwindow, self.id, self.x, self.y = widget, None, None, 0, 0
 
     def showtip(self, text):
+        print("showtip")
         # showtip method for ToolTip class
         self.text = text
         if self.tipwindow or not self.text:
@@ -36,6 +37,7 @@ class AppToolTip(object):
         label.pack(ipadx=1)
 
     def hidetip(self):
+        print("hidetip")
         # hidetip method for ToolTip class
         tw = self.tipwindow
         self.tipwindow = None
