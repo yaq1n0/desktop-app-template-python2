@@ -9,7 +9,7 @@ from data.MyFunctions.makeGeometry import makeGeometry
 
 def createTkImage(path, x_size, y_size):
     img_open = Image.open(path)
-    img_resized = img_open.resize((x_size, y_size), Image.ANTIALIAS)
+    img_resized = img_open.resize((x_size, y_size))
     img_Tk = ImageTk.PhotoImage(img_resized)
     return img_Tk
 
