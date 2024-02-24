@@ -7,7 +7,7 @@ from tkinter import END
 from tkinter.messagebox import showinfo, showwarning
 
 from data.MyClasses import MyFrame, MyLabel, MyToggleButton, MyImageButton, MyEntry
-from data.MyFunctions import GrayScale, createTkImage, writePreferences
+from data.MyFunctions import generate_grayscale_hex, createTkImage, writePreferences
 from data.MyVariables import MyFonts
 from data.MyVariables import dev
 from data.MyVariables import font as config_font
@@ -58,7 +58,7 @@ class PreferencesPage(object):
         self.setAll()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, GrayScale(20))
+        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))
 
     def createTitle(self):
         self.title_label = MyLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
@@ -92,12 +92,12 @@ class PreferencesPage(object):
         self.dev_button = MyToggleButton(self.mainFrame, 'Developer', 0.60, 0.70)
 
     def createResetButton(self):
-        self.reset_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('lib/images/reset.png', 48, 48),
+        self.reset_button = MyImageButton(self.mainFrame, generate_grayscale_hex(20), createTkImage('lib/images/reset.png', 48, 48),
                                           self.funcReset, 0.30, 0.85)
         self.reset_button.place(relwidth=0.14, relheight=0.07)
 
     def createSaveButton(self):
-        self.save_button = MyImageButton(self.mainFrame, GrayScale(20), createTkImage('lib/images/save.png', 48, 48),
+        self.save_button = MyImageButton(self.mainFrame, generate_grayscale_hex(20), createTkImage('lib/images/save.png', 48, 48),
                                          self.funcSave, 0.56, 0.85)
         self.save_button.place(relwidth=0.14, relheight=0.07)
 

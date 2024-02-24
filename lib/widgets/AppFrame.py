@@ -4,7 +4,7 @@
 from tkinter import Frame
 
 
-class MyFrame(Frame):
+class AppFrame(Frame):
     relx, rely, relwidth, relheight = 0, 0, 1, 1
 
     def __init__(self, parent, bgcolor):

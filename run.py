@@ -5,7 +5,7 @@ from sys import executable, argv
 # imports
 from tkinter import Tk
 
-from data.MyFunctions import GrayScale, makeGeometry
+from data.MyFunctions import generate_grayscale_hex, makeGeometry
 from data.MyVariables.preferences import dev
 from data.MyVariables.preferences import height as config_height
 from data.MyVariables.preferences import width as config_width
@@ -39,7 +39,7 @@ root.title('MyApp')
 root.iconbitmap('lib/images/favicon.ico')
 root.resizable(False, False)
 root.geometry(makeGeometry(root, config_width, config_height))
-root.configure(bg=GrayScale(20))
+root.configure(bg=generate_grayscale_hex(20))
 
 # creating StartPage instance 'startPage'
 startPage = StartPage(root)

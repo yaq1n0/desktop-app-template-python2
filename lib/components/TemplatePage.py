@@ -14,4 +14,4 @@ class TemplatePage(object):
         self.createFrame()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, GrayScale(20))
+        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))

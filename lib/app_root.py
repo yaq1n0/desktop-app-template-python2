@@ -50,7 +50,7 @@ default_preferences = loadJSON("app_default_preferences.json")
 font = user_preferences["font"]
 font_size = user_preferences["font_size"]
 
-font_sizes = {
+fonts = {
     'Default': (font, font_size),
     'DefaultBold': (font, font_size, 'bold'),
     'Small': (font, int(round(font_size * 0.75, 0))),

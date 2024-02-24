@@ -3,7 +3,7 @@
 from lib.vars import MyFonts
 
 # imports
-from lib.functions import GrayScale
+from lib.functions import generate_grayscale_hex
 
 
 class MainPage(object):
@@ -17,7 +17,7 @@ class MainPage(object):
         self.createTitle()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, GrayScale(20))
+        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))
 
     def createTitle(self):
         self.titleLabel = MyLabel(self.mainFrame, 'Main Page', 0.25, 0.10)

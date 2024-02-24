@@ -3,13 +3,14 @@
 # imports
 from tkinter import Scale, Label, StringVar, HORIZONTAL, RIDGE, FLAT
 
-from data.MyFunctions import GrayScale
-from data.MyVariables import MyFonts
+from lib.functions import generate_grayscale_hex
+from lib.app_root import fonts
 
 
-class MyScale(Scale):
-    bgcolor, fgcolor, lowrange, highrange, resolution, s_relwidth, s_relheight = GrayScale(20), GrayScale(
-        220), 1.0, 100.0, 0.1, 0.10, 0.05
+class AppScale(Scale):
+    bgcolor, fgcolor, lowrange, highrange, resolution, s_relwidth, s_relheight = (
+        generate_grayscale_hex(20),
+        generate_grayscale_hex(220), 1.0, 100.0, 0.1, 0.10, 0.05)
 
     def __init__(self, parent, text, relx, rely):
         self.parent, self.text, self.relx, self.rely = parent, text, relx, rely
@@ -22,12 +23,12 @@ class MyScale(Scale):
     def defaults(self):
         self.scaleConfigure()
         self.scalePlace()
-        self.labelCreate()
+        self.createLabel()
 
     def scaleConfigure(self):
         self.configure(command=self.update,
                        from_=self.lowrange, to=self.highrange,
-                       orient=HORIZONTAL, showvalue=0, resolution=self.resolution,
+                       orient=HORIZONTAL, showvalue=False, resolution=self.resolution,
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=RIDGE, highlightthickness=0, bd=0)
 
@@ -42,7 +43,7 @@ class MyScale(Scale):
 
     def labelConfigure(self):
         self.label.configure(textvariable=self.l_val,
-                             font=MyFonts['Large'],
+                             font=fonts['Large'],
                              bg=self.bgcolor, fg=self.fgcolor,
                              relief=FLAT,
                              padx=2, pady=2)

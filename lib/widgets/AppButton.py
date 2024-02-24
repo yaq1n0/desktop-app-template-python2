@@ -3,12 +3,12 @@
 # imports
 from tkinter import Button, RIDGE
 
-from data.MyFunctions import GrayScale
-from data.MyVariables import MyFonts
+from lib.functions import generate_grayscale_hex
+from lib.app_root import fonts
 
 
-class MyButton(Button):
-    bgcolor, fgcolor, relwidth, relheight = GrayScale(40), GrayScale(220), 0.10, 0.05
+class AppButton(Button):
+    bgcolor, fgcolor, relwidth, relheight = generate_grayscale_hex(40), generate_grayscale_hex(220), 0.10, 0.05
     abgcolor, afgcolor = bgcolor, fgcolor
 
     def __init__(self, parent, text, command, relx, rely):
@@ -21,7 +21,7 @@ class MyButton(Button):
 
     def configure_(self):
         self.configure(text=self.text, command=self.command,
-                       font=MyFonts['DefaultBold'],
+                       font=fonts['DefaultBold'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        activebackground=self.abgcolor, activeforeground=self.afgcolor,
                        relief=RIDGE, highlightthickness=0, bd=0)

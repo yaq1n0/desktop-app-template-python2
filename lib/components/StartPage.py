@@ -4,7 +4,7 @@
 from data.Modules.MainPage import MainPage
 from data.Modules.PreferencesPage import PreferencesPage
 from data.MyClasses import MyFrame, MyLabel, MyButton, MyImageButton
-from data.MyFunctions import GrayScale, makeGeometry, createTkImage
+from data.MyFunctions import generate_grayscale_hex, makeGeometry, createTkImage
 from data.MyVariables import MyFonts
 from data.MyVariables.preferences import height as config_height
 from data.MyVariables.preferences import width as config_width
@@ -26,7 +26,7 @@ class StartPage(object):
         self.createCreditsLabel()
 
     def createFrame(self):
-        self.mainFrame = MyFrame(self.root, GrayScale(20))
+        self.mainFrame = MyFrame(self.root, generate_grayscale_hex(20))
 
     def createTitle(self):
         self.titleLabel = MyLabel(self.mainFrame, 'Welcome!', 0.25, 0.10)
@@ -41,7 +41,7 @@ class StartPage(object):
         self.button2 = MyButton(self.mainFrame, 'Button2', placeholder, 0.25, 0.30)
         self.button3 = MyButton(self.mainFrame, 'Button3', placeholder, 0.25, 0.40)
         self.button4 = MyButton(self.mainFrame, 'Button4', placeholder, 0.25, 0.50)
-        self.button5 = MyImageButton(self.mainFrame, GrayScale(20),
+        self.button5 = MyImageButton(self.mainFrame, generate_grayscale_hex(20),
                                      createTkImage('lib/images/preferences.png', 48, 48),
                                      self.gotoPreferences, 0.425, 0.65)
 
@@ -54,7 +54,7 @@ class StartPage(object):
     def createCreditsLabel(self):
         credits_text = 'Created By: Yaqin Hasan'
         self.creditsLabel = MyLabel(self.mainFrame, credits_text, 0.25, 0.75)
-        self.creditsLabel.configure(font=MyFonts['Default'], fg=GrayScale(180))
+        self.creditsLabel.configure(font=MyFonts['Default'], fg=generate_grayscale_hex(180))
         self.creditsLabel.place(relwidth=0.50, relheight=0.25)
 
     def createMain(self):

@@ -3,12 +3,12 @@
 # imports
 from tkinter import Label, FLAT, N
 
-from data.MyFunctions import GrayScale
-from data.MyVariables import MyFonts
+from lib.functions import generate_grayscale_hex
+from lib.app_root import fonts
 
 
-class MyLabel(Label):
-    bgcolor, fgcolor = GrayScale(20), GrayScale(220)
+class AppLabel(Label):
+    bgcolor, fgcolor = generate_grayscale_hex(20), generate_grayscale_hex(220)
 
     def __init__(self, parent, text, relx, rely):
         self.parent, self.text, self.relx, self.rely = parent, text, relx, rely
@@ -20,7 +20,7 @@ class MyLabel(Label):
 
     def configure_(self):
         self.configure(text=self.text,
-                       font=MyFonts['Default'],
+                       font=fonts['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=FLAT, anchor=N,
                        padx=2, pady=2)

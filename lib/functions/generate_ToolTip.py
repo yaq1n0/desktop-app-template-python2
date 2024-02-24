@@ -7,7 +7,7 @@
 
 def generate_ToolTip(widget, text):
     """ generate ToolTip widget with text """
-    from lib.widgets.ToolTip import ToolTip
+    from lib.widgets.AppToolTip import ToolTip
 
     tooltip = ToolTip(widget)
 

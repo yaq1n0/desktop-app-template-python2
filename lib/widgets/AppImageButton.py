@@ -4,7 +4,7 @@
 from tkinter import Button, RIDGE
 
 
-class MyImageButton(Button):
+class AppImageButton(Button):
     # optimized for 16:9 windows
     relwidth, relheight = 0.05 / (16.0 / 9.0), 0.05
 

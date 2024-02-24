@@ -3,13 +3,13 @@
 # imports
 from tkinter import Entry, RIDGE
 
-from data.MyClasses.MyLabel import MyLabel
-from data.MyFunctions import GrayScale
-from data.MyVariables import MyFonts
+from lib.widgets import AppLabel
+from lib.functions import generate_grayscale_hex
+from lib.app_root import fonts
 
 
-class MyEntry(Entry):
-    charwidth, bgcolor, fgcolor = 20, GrayScale(20), GrayScale(220)
+class EntryBox(Entry):
+    charwidth, bgcolor, fgcolor = 20, generate_grayscale_hex(20), generate_grayscale_hex(220)
 
     def __init__(self, parent, text, relx, rely):
         self.parent, self.text, self.relx, self.rely = parent, text, relx, rely
@@ -24,7 +24,7 @@ class MyEntry(Entry):
         self.createLabel()
 
     def entryConfigure(self):
-        self.configure(width=self.charwidth, font=MyFonts['Default'],
+        self.configure(width=self.charwidth, font=fonts['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=RIDGE, highlightthickness=2, bd=0)
 
@@ -32,5 +32,5 @@ class MyEntry(Entry):
         self.place(relx=self.relx, rely=self.rely)
 
     def createLabel(self):
-        self.label = MyLabel(self.parent, self.text, self.relx, self.rely - 0.050)
-        self.label.configure(font=MyFonts['Large'])
+        self.label = AppLabel(self.parent, self.text, self.relx, self.rely - 0.050)
+        self.label.configure(font=fonts['Large'])
