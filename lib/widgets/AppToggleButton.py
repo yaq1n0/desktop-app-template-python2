@@ -1,14 +1,14 @@
-"""ToggleButton Class"""
+""" AppToggleButton class"""
 
-from lib.app_root import *
-from lib.functions import *
+from lib.app_root import generate_fonts
+from lib.functions import generate_grayscale_hex
 from .AppButton import AppButton
 from .AppFrame import AppFrame
 from .AppLabel import AppLabel
 
 
 class AppToggleButton(object):
-    """ToggleButton Class"""
+    """ AppToggleButton class """
     relwidth, relheight, enabled = 0.20, 0.10, False
 
     def __init__(self, parent, text, relx, rely):
@@ -21,7 +21,7 @@ class AppToggleButton(object):
 
     def createTitleLabel(self):
         self.titleLabel = AppLabel(self.parent, self.text, self.relx, self.rely - 0.05)
-        self.titleLabel.configure(font=fonts['LargeBold'])
+        self.titleLabel.configure(font=generate_fonts()['LargeBold'])
 
     def createFrames(self):
         self.mainFrame = AppFrame(self.parent, generate_grayscale_hex(0))

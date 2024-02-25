@@ -1,13 +1,14 @@
-# AppLabel class
+""" AppLabel class """
 
 # imports
 from tkinter import Label, FLAT, N
 
-from lib.app_root import *
-from lib.functions import *
+from lib.app_root import generate_fonts
+from lib.functions import generate_grayscale_hex
 
 
 class AppLabel(Label):
+    """ AppLabel class """
     bgcolor, fgcolor = generate_grayscale_hex(20), generate_grayscale_hex(220)
 
     def __init__(self, parent, text, relx, rely):
@@ -20,7 +21,7 @@ class AppLabel(Label):
 
     def configure_(self):
         self.configure(text=self.text,
-                       font=fonts['Default'],
+                       font=generate_fonts()['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=FLAT, anchor=N,
                        padx=2, pady=2)

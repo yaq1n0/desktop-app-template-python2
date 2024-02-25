@@ -1,13 +1,14 @@
-# MyButton Class
+""" AppButton class """
 
 # imports
 from tkinter import Button, RIDGE
 
-from lib.app_root import *
-from lib.functions import *
+from lib.AppState import AppState
+from lib.functions import generate_grayscale_hex
 
 
 class AppButton(Button):
+    """ AppButton class """
     bgcolor, fgcolor, relwidth, relheight = generate_grayscale_hex(40), generate_grayscale_hex(220), 0.10, 0.05
     abgcolor, afgcolor = bgcolor, fgcolor
 
@@ -20,6 +21,9 @@ class AppButton(Button):
         self.place_()
 
     def configure_(self):
+        # load AppState fonts
+        fonts = AppState().fonts
+
         self.configure(text=self.text, command=self.command,
                        font=fonts['DefaultBold'],
                        bg=self.bgcolor, fg=self.fgcolor,

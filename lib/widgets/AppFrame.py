@@ -1,10 +1,11 @@
-# MyFrame Class
+""" AppFrame class """
 
 # imports
 from tkinter import Frame
 
 
 class AppFrame(Frame):
+    """ AppFrame class """
     relx, rely, relwidth, relheight = 0, 0, 1, 1
 
     def __init__(self, parent, bgcolor):

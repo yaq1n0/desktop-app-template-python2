@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     test_root = Tk()
     test_root.geometry(generate_tk_geometry(test_root, 500, 500))
-    _img = generate_tk_image('../../resources/test.png', 500, 500)
+    _img = generate_tk_image('../../resources/images/test.png', 500, 500)
     picture_label = Label(test_root, image=_img)
     picture_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     test_root.mainloop()

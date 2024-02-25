@@ -1,8 +1,8 @@
 """ MainPage class """
 
-from lib.app_root import *
-from lib.functions import *
-from lib.widgets import *
+from lib.app_root import generate_fonts
+from lib.functions import generate_grayscale_hex
+from lib.widgets import AppFrame, AppLabel
 
 
 class MainPage(object):
@@ -19,5 +19,5 @@ class MainPage(object):
 
     def createTitle(self):
         self.titleLabel = AppLabel(self.mainFrame, 'Main Page', 0.25, 0.10)
-        self.titleLabel.configure(font=fonts['ExtraLargeBold'])
+        self.titleLabel.configure(font=generate_fonts()['ExtraLargeBold'])
         self.titleLabel.place(relwidth=0.50)

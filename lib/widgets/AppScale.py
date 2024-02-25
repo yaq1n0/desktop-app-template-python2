@@ -1,13 +1,14 @@
-# MyScale Class
+""" AppScale class """
 
 # imports
 from tkinter import Scale, Label, StringVar, HORIZONTAL, RIDGE, FLAT
 
-from lib.app_root import *
-from lib.functions import *
+from lib.app_root import generate_fonts
+from lib.functions import generate_grayscale_hex
 
 
 class AppScale(Scale):
+    """ AppScale class """
     bgcolor, fgcolor, lowrange, highrange, resolution, s_relwidth, s_relheight = (
         generate_grayscale_hex(20),
         generate_grayscale_hex(220), 1.0, 100.0, 0.1, 0.10, 0.05)
@@ -43,7 +44,7 @@ class AppScale(Scale):
 
     def labelConfigure(self):
         self.label.configure(textvariable=self.l_val,
-                             font=fonts['Large'],
+                             font=generate_fonts()['Large'],
                              bg=self.bgcolor, fg=self.fgcolor,
                              relief=FLAT,
                              padx=2, pady=2)

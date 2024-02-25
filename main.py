@@ -1,25 +1,28 @@
 """ desktop-app-template in Python3 using Tkinter """
 
-# imports
+
 from tkinter import Tk
 
-from lib.app_root import *
-from lib.components import *
-from lib.functions import *
+from lib.AppState import AppState
+from lib.functions import generate_tk_geometry, generate_grayscale_hex, program_quit, program_restart
+from components import StartPage
 
-# creating root
+
+# loading AppState
+user_preferences_dict = AppState().user_preferences.asDict()
+
+# creating Tk root
 root = Tk()
 root.title('MyApp')
 root.iconbitmap('resources/favicon.ico')
-root.geometry(generate_tk_geometry(root, user_preferences['width'], user_preferences['height']))
+root.geometry(generate_tk_geometry(root, user_preferences_dict['width'], user_preferences_dict['height']))
 root.configure(bg=generate_grayscale_hex(20))
 
-# creating StartPage instance 'startPage'
+# creating StartPage instance 'startPage' and raising it
 startPage = StartPage(root)
 
 
-def raiseStart(*args):
-    root.geometry(generate_tk_geometry(root, user_preferences['width'], user_preferences['height']))
+def raiseStart():
     startPage.mainFrame.tkraise()
 
 
@@ -33,5 +36,3 @@ root.bind('<Button-4>', raiseStart)
 
 # mainloop
 root.mainloop()
-
-

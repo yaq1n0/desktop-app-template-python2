@@ -1,8 +1,8 @@
 """ DemoPage class """
 
-from lib.app_root import *
-from lib.functions import *
-from lib.widgets import *
+from main import appState
+from lib.functions import generate_grayscale_hex
+from lib.widgets import AppFrame, AppLabel
 
 
 class DemoPage(object):
@@ -19,5 +19,5 @@ class DemoPage(object):
 
     def createTitle(self):
         self.titleLabel = AppLabel(self.mainFrame, 'Demo Page', 0.25, 0.10)
-        self.titleLabel.configure(font=fonts['ExtraLargeBold'])
+        self.titleLabel.configure(font=appState.fonts['ExtraLargeBold'])
         self.titleLabel.place(relwidth=0.50)

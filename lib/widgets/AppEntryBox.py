@@ -1,14 +1,15 @@
-# MyEntry Class
+""" AppEntryBox class """
 
 # imports
 from tkinter import Entry, RIDGE
 
-from lib.app_root import *
-from lib.functions import *
+from lib.app_root import generate_fonts
+from lib.functions import generate_grayscale_hex
 from .AppLabel import AppLabel
 
 
 class AppEntryBox(Entry):
+    """ AppEntryBox class """
     charwidth, bgcolor, fgcolor = 20, generate_grayscale_hex(20), generate_grayscale_hex(220)
 
     def __init__(self, parent, text, relx, rely):
@@ -24,7 +25,7 @@ class AppEntryBox(Entry):
         self.createLabel()
 
     def entryConfigure(self):
-        self.configure(width=self.charwidth, font=fonts['Default'],
+        self.configure(width=self.charwidth, font=generate_fonts()['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=RIDGE, highlightthickness=2, bd=0)
 
@@ -33,4 +34,4 @@ class AppEntryBox(Entry):
 
     def createLabel(self):
         self.label = AppLabel(self.parent, self.text, self.relx, self.rely - 0.050)
-        self.label.configure(font=fonts['Large'])
+        self.label.configure(font=generate_fonts()['Large'])

@@ -1,14 +1,12 @@
 """ PreferencesPage class """
 
 # imports
-from os import execv
-from sys import executable, argv
 from tkinter import END
 from tkinter.messagebox import showinfo
 
-from lib.app_root import *
-from lib.functions import *
-from lib.widgets import *
+from lib.app_root import generate_fonts, load_user_preferences, load_default_preferences, write_user_preferences
+from lib.functions import generate_grayscale_hex, generate_tk_image, program_restart
+from lib.widgets import AppFrame, AppLabel, AppEntryBox, AppToggleButton, AppImageButton
 
 
 class PreferencesPage(object):
@@ -35,7 +33,7 @@ class PreferencesPage(object):
 
     def createTitle(self):
         self.title_label = AppLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
-        self.title_label.configure(font=fonts['ExtraLargeBold'])
+        self.title_label.configure(font=generate_fonts()['ExtraLargeBold'])
         self.title_label.place(relwidth=0.9, relheight=0.05)
 
     def createWidthEntry(self):
@@ -87,6 +85,8 @@ class PreferencesPage(object):
         # set all entries in GUI from imported vars from preferences.py
         self.clearALL()
 
+        user_preferences = load_user_preferences()
+
         self.width_entry.insert(0, str(user_preferences['width']))
         self.height_entry.insert(0, str(user_preferences['height']))
         self.font_entry.insert(0, str(user_preferences['font']))
@@ -130,6 +130,8 @@ class PreferencesPage(object):
         # reset to defaults
         self.clearALL()
 
+        default_preferences = load_default_preferences()
+
         self.width_entry.insert(0, str(default_preferences['width']))
         self.height_entry.insert(0, str(default_preferences['height']))
         self.font_entry.insert(0, str(default_preferences['font']))
@@ -161,7 +163,7 @@ class PreferencesPage(object):
                                     }
 
             user_preferences = new_user_preferences.copy()
-            writeJSON("lib/app_user_preferences.json", user_preferences)
+            write_user_preferences(user_preferences)
 
         showinfo('Settings Saved', 'Settings Saved, click OK to restart')
 
