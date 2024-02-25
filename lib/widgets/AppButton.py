@@ -3,8 +3,8 @@
 # imports
 from tkinter import Button, RIDGE
 
-from lib.functions import generate_grayscale_hex
-from lib.app_root import fonts
+from lib.app_root import *
+from lib.functions import *
 
 
 class AppButton(Button):

@@ -1,44 +1,22 @@
-# preferences page class
+""" PreferencesPage class """
 
 # imports
 from os import execv
 from sys import executable, argv
 from tkinter import END
-from tkinter.messagebox import showinfo, showwarning
+from tkinter.messagebox import showinfo
 
-from lib.components import *
-from lib.widgets import AppFrame, AppLabel, AppToggleButton, AppImageButton, AppEntryBox
-from lib.functions import generate_grayscale_hex, generate_tk_image
-from lib.app_root import user_preferences, default_preferences, fonts, writeJSON
-
-
-# restart and quit functions
-def programRestart(*args):
-    if user_preferences['dev'] == True:
-        print('[program] restart')
-
-    # code from 'https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/'
-    execv(executable, ['python'] + argv)
-
-    return None
-
-
-def programQuit(*args):
-    if user_preferences['dev'] == True:
-        print('[program] quit')
-
-    exit()
-
-    return None
+from lib.app_root import *
+from lib.functions import *
+from lib.widgets import *
 
 
 class PreferencesPage(object):
+    """ PreferencesPage class """
+
     def __init__(self, root):
         self.root = root
 
-        self.defaults()
-
-    def defaults(self):
         self.createFrame()
         self.createTitle()
         self.createWidthEntry()
@@ -187,4 +165,4 @@ class PreferencesPage(object):
 
         showinfo('Settings Saved', 'Settings Saved, click OK to restart')
 
-        programRestart()
+        program_restart()

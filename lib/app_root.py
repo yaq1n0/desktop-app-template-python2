@@ -1,10 +1,12 @@
-"""this is where to store root variables and user preferences for the app."""
+""" app_root.py : this is where to store root variables for the app as well as manipulates the JSON files used to
+store program configuration """
 
 # imports
 import json
 
 
 def postprocess_booleans_read(dict_from_json: dict) -> dict:
+    """ process boolean strings into python boolean types after reading from JSON """
     for e in dict_from_json:
         if dict_from_json[e] == "True":
             dict_from_json[e] = True
@@ -15,6 +17,7 @@ def postprocess_booleans_read(dict_from_json: dict) -> dict:
 
 
 def preprocess_booleans_write(dict_from_json: dict) -> dict:
+    """ process booleans from python boolean types before writing to JSON"""
     for e in dict_from_json:
         if dict_from_json[e] == True:
             dict_from_json[e] = "True"
@@ -25,6 +28,7 @@ def preprocess_booleans_write(dict_from_json: dict) -> dict:
 
 
 def loadJSON(path: str) -> dict:
+    """ load the JSON file and performs postprocessing """
     json_file = open(path, "r")
     json_obj = json.load(json_file)
 
@@ -35,6 +39,7 @@ def loadJSON(path: str) -> dict:
 
 
 def writeJSON(path: str, json_obj: dict) -> None:
+    """ perform some preprocessing and write to a JSON file """
     json_obj = preprocess_booleans_write(json_obj)
 
     json_file = open(path, "w")
@@ -43,13 +48,15 @@ def writeJSON(path: str, json_obj: dict) -> None:
     json_file.close()
 
 
+# load user_preferences and default_preferences
 user_preferences = loadJSON("lib/app_user_preferences.json")
 default_preferences = loadJSON("lib/app_default_preferences.json")
 
-# generate font_size permutations automatically
+# generate font permutations automatically
 font = user_preferences["font"]
 font_size = user_preferences["font_size"]
 
+# global font permutations dictionary
 fonts = {
     'Default': (font, font_size),
     'DefaultBold': (font, font_size, 'bold'),

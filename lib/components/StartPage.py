@@ -1,15 +1,19 @@
-# start page class
+""" StartPage class """
 
 # imports
 import webbrowser
 
-from lib.components import *
-from lib.widgets import AppFrame, AppLabel, AppButton, AppImageButton
+from lib.app_root import *
 from lib.functions import *
-from lib.app_root import fonts
+from lib.widgets import *
+from .DemoPage import DemoPage
+from .MainPage import MainPage
+from .PreferencesPage import PreferencesPage
+from .TemplatePage import TemplatePage
 
 
 class StartPage(object):
+    """ StartPage class """
     main_generated = False
     demo_generated = False
     template_generated = False
@@ -18,9 +22,6 @@ class StartPage(object):
     def __init__(self, root):
         self.root = root
 
-        self.defaults()
-
-    def defaults(self):
         self.createFrame()
         self.createTitle()
         self.createButtons()

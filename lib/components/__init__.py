@@ -1,5 +1,5 @@
-from .MainPage import MainPage
 from .DemoPage import DemoPage
-from .TemplatePage import TemplatePage
+from .MainPage import MainPage
 from .PreferencesPage import PreferencesPage
 from .StartPage import StartPage
+from .TemplatePage import TemplatePage

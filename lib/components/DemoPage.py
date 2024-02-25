@@ -1,20 +1,16 @@
-# <template> page class
+""" DemoPage class """
 
-# imports
-
-from lib.components import *
-from lib.widgets import AppFrame, AppLabel
-from lib.functions import generate_grayscale_hex
-from lib.app_root import fonts
+from lib.app_root import *
+from lib.functions import *
+from lib.widgets import *
 
 
 class DemoPage(object):
+    """ DemoPage class """
+
     def __init__(self, root):
         self.root = root
 
-        self.defaults()
-
-    def defaults(self):
         self.createFrame()
         self.createTitle()
 

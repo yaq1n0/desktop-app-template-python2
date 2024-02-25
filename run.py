@@ -1,34 +1,11 @@
-# template for Python Desktop App using Tkinter
+""" desktop-app-template in Python3 using Tkinter """
 
-from os import execv
-from sys import executable, argv
 # imports
 from tkinter import Tk
 
+from lib.app_root import *
 from lib.components import *
-from lib.functions import generate_grayscale_hex, generate_tk_geometry
-from lib.app_root import user_preferences
-
-
-# functions
-def programRestart(*args):
-    if user_preferences['dev']:
-        print('[program] restart')
-
-    # code from 'https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/'
-    execv(executable, ['python'] + argv)
-
-    return None
-
-
-def programQuit(*args):
-    if user_preferences['dev']:
-        print('[program] quit')
-
-    exit()
-
-    return None
-
+from lib.functions import *
 
 # creating root
 root = Tk()
@@ -49,10 +26,12 @@ def raiseStart(*args):
 raiseStart()
 
 # binds
-root.bind('<Control-q>', programQuit)
-root.bind('<Control-r>', programRestart)
+root.bind('<Control-q>', program_quit)
+root.bind('<Control-r>', program_restart)
 root.bind('<Escape>', raiseStart)
 root.bind('<Button-4>', raiseStart)
 
 # mainloop
 root.mainloop()
+
+

@@ -1,9 +1,10 @@
 """ToggleButton Class"""
 
-# imports
-from lib.widgets import AppButton, AppFrame, AppLabel
-from lib.functions import generate_grayscale_hex
-from lib.app_root import fonts
+from lib.app_root import *
+from lib.functions import *
+from .AppButton import AppButton
+from .AppFrame import AppFrame
+from .AppLabel import AppLabel
 
 
 class AppToggleButton(object):

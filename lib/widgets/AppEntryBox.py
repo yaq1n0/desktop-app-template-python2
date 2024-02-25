@@ -3,9 +3,9 @@
 # imports
 from tkinter import Entry, RIDGE
 
+from lib.app_root import *
+from lib.functions import *
 from .AppLabel import AppLabel
-from lib.functions import generate_grayscale_hex
-from lib.app_root import fonts
 
 
 class AppEntryBox(Entry):

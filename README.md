@@ -45,3 +45,5 @@ way that is similar to and will be simple to port over to a web-app type deploym
 ## Features to be added
 
 - DemoPage with most of the widgets implemented for demo purposes. 
+- For some reason the program_restart function only works once, I'm assuming it's some kinda pid issue. 
+Long term solution might be to remove the need for having to restart the program at all. 

@@ -3,9 +3,6 @@
 # imports
 from tkinter import Toplevel, Label, LEFT, SOLID
 
-from lib.functions.generate_grayscale_hex import generate_grayscale_hex
-from lib.app_root import fonts
-
 """code from 'https://stackoverflow.com/questions/20399243/display-message-when-hovering-over-something-with-mouse
 -cursor-in-python'"""
 
