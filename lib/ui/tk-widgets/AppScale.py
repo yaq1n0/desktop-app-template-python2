@@ -3,8 +3,13 @@
 # imports
 from tkinter import Scale, Label, StringVar, HORIZONTAL, RIDGE, FLAT
 
+<<<<<<< Updated upstream:lib/widgets/AppScale.py
 from lib.app_root import generate_fonts
 from lib.functions import generate_grayscale_hex
+=======
+from lib.preferences import *
+from lib.functions import *
+>>>>>>> Stashed changes:lib/ui/tk-widgets/AppScale.py
 
 
 class AppScale(Scale):

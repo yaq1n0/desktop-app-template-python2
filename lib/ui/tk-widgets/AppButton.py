@@ -3,8 +3,13 @@
 # imports
 from tkinter import Button, RIDGE
 
+<<<<<<< Updated upstream:lib/widgets/AppButton.py
 from lib.AppState import AppState
 from lib.functions import generate_grayscale_hex
+=======
+from lib.preferences import *
+from lib.functions import *
+>>>>>>> Stashed changes:lib/ui/tk-widgets/AppButton.py
 
 
 class AppButton(Button):

@@ -3,10 +3,22 @@
 # imports
 import webbrowser
 
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:components/StartPage.py
 from main import appState
 from lib.functions import generate_grayscale_hex, generate_tk_image
 from lib.widgets import AppFrame, AppLabel, AppButton, AppImageButton
 
+========
+from lib.preferences import *
+from lib.functions import *
+from lib.widgets import *
+>>>>>>>> Stashed changes:lib/components/StartPage.py
+=======
+from lib.app_root import *
+from lib.functions import *
+from lib.widgets import *
+>>>>>>> Stashed changes
 from .DemoPage import DemoPage
 from .MainPage import MainPage
 from .PreferencesPage import PreferencesPage
@@ -33,7 +45,11 @@ class StartPage(object):
 
     def createTitle(self):
         self.titleLabel = AppLabel(self.mainFrame, 'Welcome!', 0.25, 0.10)
+<<<<<<< Updated upstream
         self.titleLabel.configure(font=appState.fonts['ExtraLargeBold'])
+=======
+        self.titleLabel.configure(font=fonts['ExtraLargeBold'])
+>>>>>>> Stashed changes
         self.titleLabel.place(relwidth=0.50)
 
     def createButtons(self):
@@ -44,7 +60,11 @@ class StartPage(object):
         self.button2 = AppButton(self.mainFrame, 'Demo', self.gotoDemo, 0.25, 0.30)
         self.button3 = AppButton(self.mainFrame, 'Template', self.gotoTemplate, 0.25, 0.40)
         self.button4 = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
+<<<<<<< Updated upstream
+                                      generate_tk_image('resources/images/preferences.png', 48, 48),
+=======
                                       generate_tk_image('resources/preferences.png', 48, 48),
+>>>>>>> Stashed changes
                                       self.gotoPreferences, 0.46, 0.60)
 
         self.button1.place(relwidth=0.50)

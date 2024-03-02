@@ -3,8 +3,13 @@
 # imports
 from tkinter import Label, FLAT, N
 
+<<<<<<< Updated upstream:lib/widgets/AppLabel.py
 from lib.app_root import generate_fonts
 from lib.functions import generate_grayscale_hex
+=======
+from lib.preferences import *
+from lib.functions import *
+>>>>>>> Stashed changes:lib/ui/tk-widgets/AppLabel.py
 
 
 class AppLabel(Label):

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
   "width": 1280,
   "height": 720,
@@ -6,3 +7,6 @@
   "tooltips": "True",
   "dev": "True"
 }
+=======
+{"width": 1280, "height": 720, "font": "Terminal", "font_size": 12, "tooltips": "True", "dev": "True"}
+>>>>>>> Stashed changes

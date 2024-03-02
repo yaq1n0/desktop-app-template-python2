@@ -1,5 +1,12 @@
 # Python 3 Tk based Desktop GUI App template
 
+### What is this? 
+
+In terms of an MVC design pattern,
+The framework includes the skeleton for the "model" and state permanence as well as supporting data structures for this. 
+It also includes wrappers to simplify the creation of the UI, or the "view", and has common control flows implemented (page navigation)
+It also includes the logical structure and file structure to support the implementation of the underlying controller code in /lib/app
+
 ### Origins
 
 This was forked from a Python software engineering group coursework I made in my Engineering Foundation Year.
@@ -11,23 +18,35 @@ can be found here.
 
 I saw the potential in repurposing the GUI elements and codebase for the coursework into a template/framework that I
 could use in the future.
-I eventually want to make it such that I can quickly implement backend functionality seperately to the front-end in a
+I eventually want to make it such that I can quickly implement backend functionality separately to the front-end in a
 way that is similar to and will be simple to port over to a web-app type deployment with flask.
 
 ## Documentation
 
 ### Directory Structure
+- main.py : program entry point
+- README.md : you are here
+- /lib : library for everything. 
 
-- run.py : program entry point
-- readme.md : you are here
-- resources : where to find and store media files (non-code objects)
-- lib : main library directory, all the code goes here
-- lib/components : this directory contains all the individual pages (components) of the app
-- lib/functions : this directory contains helpful (in my opinion) functions for the app
-- lib/widgets : this directory contains widgets that follow the app's design style
-  using the App<name> naming convention prevents conflict with the similarly named Tk default widgets
-- lib/app_root.py : this file contains the global app variables (user_preferences, fonts, etc),
-  and functions for reading and writing these to the JSON that is used for disk permanence
+- lib/app : your core back-end app code goes here (I suggest using static atomic functions that can be called from the rest of the code)
+
+- lib/components : you core front-end app code goes here. Each "Page" of the app has its own class file here. Object instance is used and passed around (Singleton design pattern). 
+
+- /lib/resources/config : configuration JSONs go here (you can encourage end user editing of these files, but I suggest using the a preference page for this, so that you can sanitize user configurations. )
+- /lib/resources/images: program image resources go here
+
+- /lib/core : contains functions responsible for handling core desktop-app-template functionality (preferences, theming etc. )
+
+- /lib/ui : contains all UI elements that can be used (import UI elements from here)
+- /lib/ui/tk-utils : contains helper functions that simplify repetitive tk actions. 
+- /lib/ui/tk-widgets : contains the Class files for the App versions of the tkinter base widgets
+- /lib/ui/compound-widgets : contains the Class files for custom compound widgets made from tk-widgets. 
+- /lib/ui/app-widgets : here is where you would put your own custom widgets for your app, if you need them
+
+### imports best practices to prevent circular dependencies
+- only import as needed, avoid wildcard imports where possible
+- nothing should be imported into /lib/core
+- import ui components straight from /lib/ui. Internal import routing should be handled by /lib/ui/__init__.py
 
 ### How to use (developer)
 
