@@ -1,8 +1,10 @@
-""" generate a grayscale hex string from a base 10 int from 0 to 255 incl. """
+"""
+atomic function to generate a grayscale hex string from a base 10 int from 0 to 255 inclusive
+"""
 
 
 def generate_grayscale_hex(num: int) -> str:
-    """ generate a grayscale hex string from a base 10 int from 0 to 255 incl. """
+    """ generate a grayscale hex string from a base 10 int from 0 to 255 inclusive """
 
     def get_hex_str_aux(number: int) -> str:
         """ auxiliary function to generate convert int to hex string, accounting for single digit hex"""

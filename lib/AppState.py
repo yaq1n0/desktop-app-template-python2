@@ -61,12 +61,12 @@ class AppState:
         self.generate_fonts()
 
     def load_user_preferences(self):
-        self.user_preferences.set_values_dict(load_json_to_dict("resources/app_user_preferences.json"))
+        self.user_preferences.set_values_dict(load_json_to_dict("resources/user_preferences.json"))
         self.user_preferences.validate_values()
 
     def write_user_preferences(self):
         self.user_preferences.validate_values()
-        write_json_from_dict("resources/app_user_preferences.json", self.user_preferences.asDict())
+        write_json_from_dict("resources/user_preferences.json", self.user_preferences.asDict())
 
     def reset_defaults(self):
         defaults = load_json_to_dict("resources/default_user_preferences.json")

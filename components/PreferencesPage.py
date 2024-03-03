@@ -201,7 +201,7 @@ class PreferencesPage(object):
 <<<<<<< Updated upstream
             write_user_preferences(user_preferences)
 =======
-            writeJSON("lib/app_user_preferences.json", user_preferences)
+            writeJSON("lib/user_preferences.json", user_preferences)
 >>>>>>> Stashed changes
 
         showinfo('Settings Saved', 'Settings Saved, click OK to restart')

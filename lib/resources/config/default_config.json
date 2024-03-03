@@ -1,8 +1,9 @@
 {
-  "width": 1280,
-  "height": 720,
-  "font": "Terminal",
-  "font_size": 12,
-  "tooltips": "True",
-  "dev": "False"
+    "font": "System",
+    "font_size": 12,
+    "enable_tooltips": "True",
+    "enable_developer": "False",
+    "theme_color_1": "#101010",
+    "theme_color_2": "#FFFFFF",
+    "theme_color_3": "#0080D0"
 }
