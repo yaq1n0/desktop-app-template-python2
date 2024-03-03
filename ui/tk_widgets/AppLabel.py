@@ -3,13 +3,7 @@
 # imports
 from tkinter import Label, FLAT, N
 
-<<<<<<< Updated upstream:lib/widgets/AppLabel.py
-from lib.app_root import generate_fonts
-from lib.functions import generate_grayscale_hex
-=======
-from lib.preferences import *
-from lib.functions import *
->>>>>>> Stashed changes:lib/ui/tk-widgets/AppLabel.py
+from core import generate_grayscale_hex, load_fonts
 
 
 class AppLabel(Label):
@@ -26,7 +20,7 @@ class AppLabel(Label):
 
     def configure_(self):
         self.configure(text=self.text,
-                       font=generate_fonts()['Default'],
+                       font=load_fonts()['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=FLAT, anchor=N,
                        padx=2, pady=2)

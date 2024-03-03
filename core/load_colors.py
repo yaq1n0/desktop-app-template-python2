@@ -2,7 +2,7 @@
 atomic function to load app theme colors
 """
 
-from read_user_config import read_user_config
+from .read_user_config import read_user_config
 
 
 def load_colors():

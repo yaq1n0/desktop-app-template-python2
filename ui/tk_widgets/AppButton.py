@@ -3,13 +3,7 @@
 # imports
 from tkinter import Button, RIDGE
 
-<<<<<<< Updated upstream:lib/widgets/AppButton.py
-from lib.AppState import AppState
-from lib.functions import generate_grayscale_hex
-=======
-from lib.preferences import *
-from lib.functions import *
->>>>>>> Stashed changes:lib/ui/tk-widgets/AppButton.py
+from core import generate_grayscale_hex, load_fonts
 
 
 class AppButton(Button):
@@ -27,10 +21,9 @@ class AppButton(Button):
 
     def configure_(self):
         # load AppState fonts
-        fonts = AppState().fonts
 
         self.configure(text=self.text, command=self.command,
-                       font=fonts['DefaultBold'],
+                       font=load_fonts()['DefaultBold'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        activebackground=self.abgcolor, activeforeground=self.afgcolor,
                        relief=RIDGE, highlightthickness=0, bd=0)

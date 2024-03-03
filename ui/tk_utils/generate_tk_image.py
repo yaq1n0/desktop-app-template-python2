@@ -15,15 +15,11 @@ def generate_tk_image(path, x_size, y_size):
 if __name__ == '__main__':
     """module unit test, create Tk window with test image"""
     from tkinter import Tk, Label
-    from lib.functions.generate_tk_geometry import generate_tk_geometry
+    from .generate_tk_geometry import generate_tk_geometry
 
     test_root = Tk()
     test_root.geometry(generate_tk_geometry(test_root, 500, 500))
-<<<<<<< Updated upstream:lib/functions/generate_tk_image.py
-    _img = generate_tk_image('../../resources/images/test.png', 500, 500)
-=======
     _img = generate_tk_image('resources/images/test.png', 500, 500)
->>>>>>> Stashed changes:lib/ui/tk-utils/generate_tk_image.py
     picture_label = Label(test_root, image=_img)
     picture_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     test_root.mainloop()

@@ -3,13 +3,7 @@
 # imports
 from tkinter import Scale, Label, StringVar, HORIZONTAL, RIDGE, FLAT
 
-<<<<<<< Updated upstream:lib/widgets/AppScale.py
-from lib.app_root import generate_fonts
-from lib.functions import generate_grayscale_hex
-=======
-from lib.preferences import *
-from lib.functions import *
->>>>>>> Stashed changes:lib/ui/tk-widgets/AppScale.py
+from core import generate_grayscale_hex, load_fonts
 
 
 class AppScale(Scale):
@@ -49,7 +43,7 @@ class AppScale(Scale):
 
     def labelConfigure(self):
         self.label.configure(textvariable=self.l_val,
-                             font=generate_fonts()['Large'],
+                             font=load_fonts()['Large'],
                              bg=self.bgcolor, fg=self.fgcolor,
                              relief=FLAT,
                              padx=2, pady=2)

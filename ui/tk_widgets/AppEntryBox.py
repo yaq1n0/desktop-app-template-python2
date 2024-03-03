@@ -3,13 +3,7 @@
 # imports
 from tkinter import Entry, RIDGE
 
-<<<<<<< Updated upstream:lib/widgets/AppEntryBox.py
-from lib.app_root import generate_fonts
-from lib.functions import generate_grayscale_hex
-=======
-from lib.preferences import *
-from lib.functions import *
->>>>>>> Stashed changes:lib/ui/tk-widgets/AppEntryBox.py
+from core import generate_grayscale_hex, load_fonts
 from .AppLabel import AppLabel
 
 
@@ -30,7 +24,7 @@ class AppEntryBox(Entry):
         self.createLabel()
 
     def entryConfigure(self):
-        self.configure(width=self.charwidth, font=generate_fonts()['Default'],
+        self.configure(width=self.charwidth, font=load_fonts()['Default'],
                        bg=self.bgcolor, fg=self.fgcolor,
                        relief=RIDGE, highlightthickness=2, bd=0)
 
@@ -39,4 +33,4 @@ class AppEntryBox(Entry):
 
     def createLabel(self):
         self.label = AppLabel(self.parent, self.text, self.relx, self.rely - 0.050)
-        self.label.configure(font=generate_fonts()['Large'])
+        self.label.configure(font=load_fonts()['Large'])

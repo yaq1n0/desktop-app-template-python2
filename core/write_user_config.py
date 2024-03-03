@@ -40,7 +40,7 @@ def validate_all(_dict: dict) -> dict:
     return _dict
 
 
-def write_user_preferences(json_dict: dict) -> None:
+def write_user_config(json_dict: dict) -> None:
     """ perform validation and preprocessing, then write to user_config file """
     validated_dict = validate_all(json_dict)
     json_file = open(path, "w")

@@ -1,2 +1,0 @@
-from generate_grayscale_hex import generate_grayscale_hex
-from preferences import default_preferences, user_preferences

@@ -4,7 +4,7 @@ atomic function to read user preferences from user_preferences.json
 
 from json import load
 
-path = "resources/user_preferences.json"
+path = "resources/config/user_config.json"
 
 
 def validate_all(_dict: dict) -> dict:

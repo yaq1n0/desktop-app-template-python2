@@ -1,20 +1,7 @@
 """ DemoPage class """
 
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:components/DemoPage.py
-from main import appState
-from lib.functions import generate_grayscale_hex
-from lib.widgets import AppFrame, AppLabel
-========
-from lib.preferences import *
-from lib.functions import *
-from lib.widgets import *
->>>>>>>> Stashed changes:lib/components/DemoPage.py
-=======
-from lib.app_root import *
-from lib.functions import *
-from lib.widgets import *
->>>>>>> Stashed changes
+from core import generate_grayscale_hex, load_fonts
+from ui import AppFrame, AppLabel
 
 
 class DemoPage(object):
@@ -31,9 +18,5 @@ class DemoPage(object):
 
     def createTitle(self):
         self.titleLabel = AppLabel(self.mainFrame, 'Demo Page', 0.25, 0.10)
-<<<<<<< Updated upstream
-        self.titleLabel.configure(font=appState.fonts['ExtraLargeBold'])
-=======
-        self.titleLabel.configure(font=fonts['ExtraLargeBold'])
->>>>>>> Stashed changes
+        self.titleLabel.configure(font=load_fonts()['ExtraLargeBold'])
         self.titleLabel.place(relwidth=0.50)

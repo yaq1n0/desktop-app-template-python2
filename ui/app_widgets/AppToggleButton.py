@@ -1,15 +1,7 @@
 """ AppToggleButton class"""
 
-<<<<<<< Updated upstream:lib/widgets/AppToggleButton.py
-from lib.app_root import generate_fonts
-from lib.functions import generate_grayscale_hex
-=======
-from lib.preferences import *
-from lib.functions import *
->>>>>>> Stashed changes:lib/ui/compound-widgets/AppToggleButton.py
-from .AppButton import AppButton
-from .AppFrame import AppFrame
-from .AppLabel import AppLabel
+from core import load_fonts, generate_grayscale_hex
+from ui import AppLabel, AppFrame, AppButton
 
 
 class AppToggleButton(object):
@@ -26,7 +18,7 @@ class AppToggleButton(object):
 
     def createTitleLabel(self):
         self.titleLabel = AppLabel(self.parent, self.text, self.relx, self.rely - 0.05)
-        self.titleLabel.configure(font=generate_fonts()['LargeBold'])
+        self.titleLabel.configure(font=load_fonts()['LargeBold'])
 
     def createFrames(self):
         self.mainFrame = AppFrame(self.parent, generate_grayscale_hex(0))

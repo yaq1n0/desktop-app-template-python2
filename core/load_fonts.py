@@ -2,7 +2,7 @@
 atomic function to load app fonts
 """
 
-from read_user_config import read_user_config
+from .read_user_config import read_user_config
 
 
 def load_fonts():

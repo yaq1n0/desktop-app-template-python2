@@ -1,29 +1,10 @@
 """ PreferencesPage class """
 
-# imports
-<<<<<<< Updated upstream
 from tkinter import END
 from tkinter.messagebox import showinfo
 
-<<<<<<<< Updated upstream:components/PreferencesPage.py
-from lib.app_root import generate_fonts, load_user_preferences, load_default_preferences, write_user_preferences
-from lib.functions import generate_grayscale_hex, generate_tk_image, program_restart
-from lib.widgets import AppFrame, AppLabel, AppEntryBox, AppToggleButton, AppImageButton
-========
-from lib.preferences import *
-from lib.functions import *
-from lib.widgets import *
->>>>>>>> Stashed changes:lib/components/PreferencesPage.py
-=======
-from os import execv
-from sys import executable, argv
-from tkinter import END
-from tkinter.messagebox import showinfo
-
-from lib.app_root import *
-from lib.functions import *
-from lib.widgets import *
->>>>>>> Stashed changes
+from core import read_user_config, write_user_config, reload_default_config, load_fonts, generate_grayscale_hex
+from ui import AppFrame, AppLabel, AppEntryBox, AppImageButton, AppToggleButton, generate_tk_image
 
 
 class PreferencesPage(object):
@@ -50,11 +31,7 @@ class PreferencesPage(object):
 
     def createTitle(self):
         self.title_label = AppLabel(self.mainFrame, 'Modify Program Settings', 0.05, 0.05)
-<<<<<<< Updated upstream
-        self.title_label.configure(font=generate_fonts()['ExtraLargeBold'])
-=======
-        self.title_label.configure(font=fonts['ExtraLargeBold'])
->>>>>>> Stashed changes
+        self.title_label.configure(font=load_fonts()['ExtraLargeBold'])
         self.title_label.place(relwidth=0.9, relheight=0.05)
 
     def createWidthEntry(self):
@@ -85,21 +62,13 @@ class PreferencesPage(object):
 
     def createResetButton(self):
         self.reset_button = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
-<<<<<<< Updated upstream
                                            generate_tk_image('resources/images/reset.png', 48, 48),
-=======
-                                           generate_tk_image('resources/reset.png', 48, 48),
->>>>>>> Stashed changes
                                            self.funcReset, 0.30, 0.85)
         self.reset_button.place(relwidth=0.14, relheight=0.07)
 
     def createSaveButton(self):
         self.save_button = AppImageButton(self.mainFrame, generate_grayscale_hex(20),
-<<<<<<< Updated upstream
                                           generate_tk_image('resources/images/save.png', 48, 48),
-=======
-                                          generate_tk_image('resources/save.png', 48, 48),
->>>>>>> Stashed changes
                                           self.funcSave, 0.56, 0.85)
         self.save_button.place(relwidth=0.14, relheight=0.07)
 
@@ -114,11 +83,8 @@ class PreferencesPage(object):
         # set all entries in GUI from imported vars from preferences.py
         self.clearALL()
 
-<<<<<<< Updated upstream
-        user_preferences = load_user_preferences()
+        user_preferences = read_user_config()
 
-=======
->>>>>>> Stashed changes
         self.width_entry.insert(0, str(user_preferences['width']))
         self.height_entry.insert(0, str(user_preferences['height']))
         self.font_entry.insert(0, str(user_preferences['font']))
@@ -158,34 +124,6 @@ class PreferencesPage(object):
         # if all the tests pass, return true
         return True
 
-    def funcReset(self):
-        # reset to defaults
-        self.clearALL()
-
-<<<<<<< Updated upstream
-        default_preferences = load_default_preferences()
-
-=======
->>>>>>> Stashed changes
-        self.width_entry.insert(0, str(default_preferences['width']))
-        self.height_entry.insert(0, str(default_preferences['height']))
-        self.font_entry.insert(0, str(default_preferences['font']))
-        self.font_size_entry.insert(0, str(default_preferences['font_size']))
-
-        if default_preferences['tooltips'] == True:
-            setattr(self.tooltips_button, 'enabled', True)
-            self.tooltips_button.func1()
-        else:
-            setattr(self.tooltips_button, 'disabled', False)
-            self.tooltips_button.func2()
-
-        if default_preferences['dev'] == True:
-            setattr(self.dev_button, 'enabled', True)
-            self.dev_button.func1()
-        else:
-            setattr(self.dev_button, 'disabled', False)
-            self.dev_button.func2()
-
     def funcSave(self):
         # save and write to config
         if self.checkAll():
@@ -198,12 +136,14 @@ class PreferencesPage(object):
                                     }
 
             user_preferences = new_user_preferences.copy()
-<<<<<<< Updated upstream
-            write_user_preferences(user_preferences)
-=======
-            writeJSON("lib/user_preferences.json", user_preferences)
->>>>>>> Stashed changes
 
-        showinfo('Settings Saved', 'Settings Saved, click OK to restart')
+            write_user_config(user_preferences)
 
-        program_restart()
+        showinfo('Settings Saved', 'Settings Saved, You might want to restart the program')
+
+    def funcReset(self):
+        # reset to defaults
+        reload_default_config()
+        self.setAll()
+
+        showinfo('Defaults loaded', 'Defaults loaded, You might want to restart the program')
