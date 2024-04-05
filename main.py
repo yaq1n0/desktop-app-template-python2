@@ -20,7 +20,7 @@ def raiseStart(event) -> None:
 raiseStart(None)
 
 # binds
-root.bind('<Escape>', raiseStart)
+root.bind('<Escape>f', raiseStart)
 root.bind('<Button-4>', raiseStart)
 
 # mainloop
